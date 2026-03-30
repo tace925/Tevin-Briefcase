@@ -220,9 +220,12 @@ function initContactForm() {
             
             if (response.ok) {
                 alert('✅ Message sent successfully! I\'ll get back to you within 24 hours.');
+                form.reset();
                 window.location.href = 'thanks.html';
             } else {
-                throw new Error('Form submission failed');
+                const errorData = await response.json();
+                console.error('Formspree error:', errorData);
+                throw new Error('Submission failed');
             }
         } catch (error) {
             console.error('Error:', error);
