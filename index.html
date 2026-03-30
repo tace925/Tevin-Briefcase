@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tevin Mulinge · CS Student & Developer</title>
-    <meta name="description" content="Portfolio of Tevin Mulinge — Computer Science student in Nairobi building systems with C++, Python, and JavaScript.">
+    <title>Tevin Mulinge · Full Stack Developer</title>
+    <meta name="description" content="Portfolio of Tevin Mulinge — Full Stack Developer in Nairobi building systems with HTML, CSS, JavaScript, Python, and C++.">
     
     <!-- CSS -->
     <link rel="stylesheet" href="script.css">
@@ -14,41 +14,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="light-mode">
-    <!-- Background overlay -->
-    <div class="bg-overlay"></div>
+    
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Background Overlay with Image -->
+    <div class="bg-overlay">
+        <div class="gradient-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Sticky Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#hero">Tevin<span class="accent">.</span></a>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#hobbies" class="nav-link">Hobbies</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button id="theme-toggle-nav" class="theme-toggle-nav" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
     
     <div class="container">
-        <!-- Theme Toggle -->
-        <div class="theme-toggle-container">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-                <i class="fas fa-sun light-icon"></i>
-                <i class="fas fa-moon dark-icon"></i>
-            </button>
-        </div>
-
         <!-- HERO SECTION -->
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="hero-content">
                 <div class="profile-image-container">
                     <img src="tevin.jpg" alt="Tevin Mulinge" class="profile-image" id="profile-img">
-                    
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span>Available for work</span>
+                    </div>
                 </div>
                 <div class="hero-text">
                     <h1 class="name">Tevin Mulinge</h1>
-                    <p class="title">Computer Science Student · C++ · Python · JavaScript</p>
+                    
+                    <!-- Typing Animation Container - Gold Color -->
+                    <div class="typing-container">
+                        <span class="typing-prefix">⚡</span>
+                        <span id="typing-text" class="typing-text gold-text"></span>
+                        <span class="typing-cursor gold-cursor">|</span>
+                    </div>
+                    
                     <p class="bio">
-                        I'm a CS student in Nairobi who transforms complex algorithms into real-world solutions. 
-                        Whether it's building bookshop systems in C++ or experimenting with AI, I approach every 
+                        I'm a Full Stack Developer in Nairobi who transforms complex algorithms into real-world solutions. 
+                        Whether it's building ordering systems in JavaScript or experimenting with C++, I approach every 
                         project with one goal: build things that actually work and help people.
                     </p>
                     <div class="hero-buttons">
                         <a href="#projects" class="btn btn-primary">View Work</a>
                         <a href="#contact" class="btn btn-outline">Contact Me</a>
+                        <a href="#" id="cv-download" class="btn btn-outline cv-btn">
+                            <i class="fas fa-file-pdf"></i> Download CV
+                        </a>
                     </div>
                     <div class="social-links">
-                        <a href="https://github.com/tace925" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://twitter.com/mulingeTev81504" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/tace925" target="_blank" class="social-link" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/mulingeTev81504" target="_blank" class="social-link" data-tooltip="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" class="social-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                     <p class="fun-fact">
                         <i class="fas fa-mug-hot"></i> 
@@ -69,17 +108,56 @@
                 <span class="skill-tag skill-git">Git</span>
                 <span class="skill-tag skill-ds">Data Structures</span>
                 <span class="skill-tag skill-algo">Algorithms</span>
+                <span class="skill-tag skill-node">Node.js</span>
+                <span class="skill-tag skill-sql">SQL</span>
             </div>
         </section>
 
-        <!-- PROJECTS SECTION WITH SCREENSHOTS -->
+        <!-- HOBBIES SECTION -->
+        <section id="hobbies" class="hobbies">
+            <h2 class="section-title">beyond the code <span class="accent">🎯</span></h2>
+            <p class="section-subtitle">what keeps me inspired when I'm not building.</p>
+            
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-icon">🏑</div>
+                    <h3>Hockey</h3>
+                    <p>On the field, strategy meets speed. Team player on and off the pitch.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🏉</div>
+                    <h3>Rugby</h3>
+                    <p>Discipline, resilience, and the thrill of the game.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🎨</div>
+                    <h3>Creative</h3>
+                    <p>Design thinking, building things, and turning ideas into reality.</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">🚗</div>
+                    <h3>Cars</h3>
+                    <p>Automotive enthusiast — from engines to aesthetics.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT FILTERS -->
         <section id="projects" class="projects">
             <h2 class="section-title">featured projects <span class="accent">📁</span></h2>
             <p class="section-subtitle">real systems i've built — each with its own story.</p>
             
-            <div class="projects-grid">
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="featured">Featured</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="cpp">C++</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+            </div>
+            
+            <div class="projects-grid" id="projectsGrid">
                 <!-- Project 1: Paul's Portfolio -->
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="featured web">
                     <div class="project-screenshot">
                         <img src="images/projects/paul-portfolio.jpg" alt="Paul's Investment Portfolio" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -113,7 +191,7 @@
                 </div>
 
                 <!-- Project 2: Triza's Compendium -->
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="featured web">
                     <div class="project-screenshot">
                         <img src="images/projects/triza-compendium.jpg" alt="Triza's Compendium" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -147,7 +225,7 @@
                 </div>
 
                 <!-- Project 3: Tevin's Tech -->
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="featured web">
                     <div class="project-screenshot">
                         <img src="images/projects/tevin-tech.jpg" alt="Tevin's Tech Agency Site" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -181,7 +259,7 @@
                 </div>
 
                 <!-- Project 4: Villa Rent System -->
-                <div class="project-card featured">
+                <div class="project-card featured" data-category="featured python">
                     <div class="project-screenshot">
                         <img src="images/projects/villa-system.jpg" alt="Villa Rental System" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -215,7 +293,7 @@
                 </div>
 
                 <!-- Project 5: Tether - Unified Ordering System -->
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-screenshot">
                         <img src="images/projects/tether-system.jpg" alt="Tether - Unified Ordering System" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -247,7 +325,7 @@
                 </div>
 
                 <!-- Project 6: Bookshop System -->
-                <div class="project-card">
+                <div class="project-card" data-category="cpp">
                     <div class="project-screenshot">
                         <img src="images/projects/bookshop-system.jpg" alt="Bookshop Management System" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -273,7 +351,7 @@
                 </div>
 
                 <!-- Project 7: SCMS Project -->
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <div class="project-screenshot">
                         <img src="images/projects/scms-project.jpg" alt="Supply Chain System" class="project-img"
                              onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
@@ -306,6 +384,29 @@
             </div>
         </section>
 
+        <!-- CREDENTIALS SECTION -->
+        <section class="credentials">
+            <h2 class="section-title">credentials <span class="accent">📜</span></h2>
+            <div class="credentials-grid">
+                <div class="credential-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Curriculum Vitae</h3>
+                    <p>My professional journey, skills, and experience at a glance.</p>
+                    <a href="cv-tevin-mulinge.pdf" class="credential-link" target="_blank">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                <div class="credential-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Good Conduct Certificate</h3>
+                    <p>Certificate of good conduct — verified character and integrity.</p>
+                    <a href="good-conduct-tevin.pdf" class="credential-link" target="_blank">
+                        <i class="fas fa-eye"></i> View Certificate
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- WHY I CODE SECTION -->
         <section class="why-section">
             <h2 class="section-title">why i build <span class="accent">🧠</span></h2>
@@ -316,9 +417,9 @@
                     a bookshop owner who doesn't need spreadsheets, a villa manager who can track bookings in seconds.
                 </p>
                 <p class="why-text">
-                    Right now I'm focused on mastering C++ and algorithms (my current unit), but I'm also 
-                    exploring how to bring those systems online with JavaScript and maybe React. Every project 
-                    I publish is a step toward building tools that are both robust and human.
+                    Right now I'm focused on mastering full stack development — from polished frontend interfaces to 
+                    robust backend systems. Every project I publish is a step toward building tools that are both 
+                    powerful and human.
                 </p>
                 <p class="why-signature">— Tevin</p>
             </div>
@@ -333,7 +434,10 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope contact-icon"></i>
-                        <span>tevinmulinge48@gmail.com</span>
+                        <span id="email-text">tevinmulinge48@gmail.com</span>
+                        <button class="copy-email-btn" id="copyEmailBtn" data-tooltip="Copy email">
+                            <i class="fas fa-copy"></i>
+                        </button>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-github contact-icon"></i>
@@ -351,9 +455,10 @@
                 
                 <!-- FORMSPREE FORM -->
                 <div class="contact-form-container">
-                    <form class="contact-form" action="https://formspree.io/f/mrbpgjqy" method="POST">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mrbpgjqy" method="POST">
                         <input type="hidden" name="_subject" value="New message from Tevin's Portfolio!">
                         <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="thanks.html">
                         
                         <p class="form-note">📧 Send me a message:</p>
                         
@@ -374,6 +479,9 @@
         <!-- FOOTER -->
         <footer class="footer">
             <span>© 2026 Tevin Mulinge · built with <i class="fas fa-heart"></i> in Nairobi</span>
+            <div class="footer-badge">
+                <span>Updated March 2026</span>
+            </div>
             <div class="footer-links">
                 <a href="https://github.com/tace925">github</a>
                 <a href="https://twitter.com/mulingeTev81504">twitter</a>

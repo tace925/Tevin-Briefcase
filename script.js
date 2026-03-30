@@ -1,127 +1,324 @@
-// ===== THEME TOGGLE =====
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+// ============================================
+// Tevin Mulinge Portfolio - Modern Glassmorphism
+// Typing Animation (Gold), Dark Mode, Form Handling
+// ============================================
+
+// ========== TYPING ANIMATION (GOLD) ==========
+const typingPhrases = [
+    "Full Stack Developer",
+    "Frontend: HTML · CSS · JavaScript · React",
+    "Backend: Python · C++ · Node.js · SQL",
+    "Tools: Git · Vercel · Formspree · Paystack"
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 80;
+
+const typingTextElement = document.getElementById("typing-text");
+
+function typeEffect() {
+    if (!typingTextElement) return;
     
-    // Check for saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.remove('light-mode');
-        body.classList.add('dark-mode');
+    const currentPhrase = typingPhrases[phraseIndex];
+    
+    if (isDeleting) {
+        typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 40;
+    } else {
+        typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 80;
     }
     
-    // Theme toggle functionality
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            if (body.classList.contains('light-mode')) {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typingSpeed = 1500;
+    }
+    
+    if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        typingSpeed = 500;
+    }
+    
+    setTimeout(typeEffect, typingSpeed);
+}
+
+// ========== DARK MODE ==========
+const themeToggle = document.getElementById('theme-toggle');
+const themeToggleNav = document.getElementById('theme-toggle-nav');
+
+function initDarkMode() {
+    const savedMode = localStorage.getItem('tevins_portfolio_darkMode');
+    if (savedMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        updateThemeIcons(true);
+    } else {
+        document.body.classList.remove('dark-mode');
+        updateThemeIcons(false);
+    }
+}
+
+function updateThemeIcons(isDark) {
+    const icons = document.querySelectorAll('#theme-toggle i, #theme-toggle-nav i');
+    icons.forEach(icon => {
+        if (isDark) {
+            icon.className = 'fas fa-sun';
+        } else {
+            icon.className = 'fas fa-moon';
+        }
+    });
+}
+
+function toggleDarkMode() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('tevins_portfolio_darkMode', isDark ? 'enabled' : 'disabled');
+    updateThemeIcons(isDark);
+}
+
+// ========== READING PROGRESS BAR ==========
+function initProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// ========== MOBILE MENU ==========
+function initMobileMenu() {
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.className = 'fas fa-times';
             } else {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-bars';
             }
-        });
-    }
-    
-    // ===== PROJECT CARD INTERACTIONS =====
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
         });
         
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                if (mobileBtn.querySelector('i')) {
+                    mobileBtn.querySelector('i').className = 'fas fa-bars';
+                }
+            });
         });
-    });
+    }
+}
+
+// ========== ACTIVE NAVIGATION LINK ==========
+function initActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // ===== SMOOTH SCROLLING FOR ANCHOR LINKS =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.scrollY + 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if (href === current) {
+                link.classList.add('active');
             }
         });
     });
+}
+
+// ========== PROJECT FILTERS ==========
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
     
-    // ===== IMAGE ERROR HANDLING =====
-    const projectImages = document.querySelectorAll('.project-img');
-    projectImages.forEach(img => {
-        img.addEventListener('error', function() {
-            this.style.display = 'none';
-            this.parentNode.classList.add('no-image');
+    if (!filterBtns.length) return;
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const filterValue = btn.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || (category && category.includes(filterValue))) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         });
     });
+}
+
+// ========== COPY EMAIL BUTTON ==========
+function initCopyEmail() {
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const emailText = document.getElementById('email-text');
     
-    // ===== FORM SUBMISSION HANDLING =====
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Show loading state
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> sending...';
-            submitBtn.disabled = true;
-            
-            // Submit to Formspree
-            fetch(this.action, {
+    if (copyBtn && emailText) {
+        copyBtn.addEventListener('click', async () => {
+            const email = emailText.textContent;
+            try {
+                await navigator.clipboard.writeText(email);
+                
+                // Show temporary tooltip
+                const originalTooltip = copyBtn.getAttribute('data-tooltip');
+                copyBtn.setAttribute('data-tooltip', 'Copied!');
+                setTimeout(() => {
+                    copyBtn.setAttribute('data-tooltip', originalTooltip);
+                }, 1500);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        });
+    }
+}
+
+// ========== CONTACT FORM WITH ALERT + REDIRECT ==========
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
                 }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Success - redirect to thank you page
-                    window.location.href = 'thanks.html';
-                } else {
-                    // Error handling
-                    return response.json().then(data => {
-                        throw new Error(data.error || 'Form submission failed');
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Oops! Something went wrong. Please try again or email me directly at tevinmulinge48@gmail.com');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
             });
+            
+            if (response.ok) {
+                // Show success alert
+                alert('✅ Message sent successfully! I\'ll get back to you within 24 hours.');
+                // Redirect to thanks page
+                window.location.href = 'thanks.html';
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('❌ Something went wrong. Please try again or email me directly at tevinmulinge48@gmail.com');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+// ========== CV DOWNLOAD ==========
+function initCvDownload() {
+    const cvBtn = document.getElementById('cv-download');
+    if (cvBtn) {
+        cvBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('📄 CV download will be available soon. Check back later!');
         });
     }
+}
+
+// ========== SMOOTH SCROLL ==========
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+}
+
+// ========== SCROLL ANIMATIONS ==========
+function initScrollAnimations() {
+    const sections = document.querySelectorAll('.projects, .skills, .hobbies, .credentials, .why-section, .contact');
     
-    // ===== DYNAMIC FUN FACT ROTATION (Optional) =====
-    const funFactElement = document.getElementById('fun-fact-text');
-    if (funFactElement) {
-        const funFacts = [
-            "I once fixed a segfault at 3am and celebrated with cold chai ☕",
-            "My code runs on caffeine and curiosity",
-            "Debugging since 2022 - still not tired of it!",
-            "I talk to my code. It talks back sometimes.",
-            "Building systems that actually work (mostly)"
-        ];
-        
-        setInterval(() => {
-            const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-            funFactElement.style.opacity = '0';
-            setTimeout(() => {
-                funFactElement.textContent = randomFact;
-                funFactElement.style.opacity = '1';
-            }, 300);
-        }, 5000);
-    }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+    });
+}
+
+// ========== INITIALIZE ALL ==========
+document.addEventListener('DOMContentLoaded', () => {
+    // Typing animation
+    setTimeout(typeEffect, 500);
+    
+    // Dark mode
+    initDarkMode();
+    if (themeToggle) themeToggle.addEventListener('click', toggleDarkMode);
+    if (themeToggleNav) themeToggleNav.addEventListener('click', toggleDarkMode);
+    
+    // Features
+    initProgressBar();
+    initMobileMenu();
+    initActiveNavLink();
+    initProjectFilters();
+    initCopyEmail();
+    initContactForm();
+    initCvDownload();
+    initSmoothScroll();
+    initScrollAnimations();
 });
+
+// Add fade-in keyframes dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
