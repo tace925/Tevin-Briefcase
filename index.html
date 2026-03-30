@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tevin Mulinge · CS Student & Developer</title>
+    <meta name="description" content="Portfolio of Tevin Mulinge — Computer Science student in Nairobi building systems with C++, Python, and JavaScript.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="script.css">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-mode">
+    <!-- Background overlay -->
+    <div class="bg-overlay"></div>
+    
+    <div class="container">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun light-icon"></i>
+                <i class="fas fa-moon dark-icon"></i>
+            </button>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="profile-image-container">
+                    <img src="tevin.jpg" alt="Tevin Mulinge" class="profile-image" id="profile-img">
+                    
+                </div>
+                <div class="hero-text">
+                    <h1 class="name">Tevin Mulinge</h1>
+                    <p class="title">Computer Science Student · C++ · Python · JavaScript</p>
+                    <p class="bio">
+                        I'm a CS student in Nairobi who transforms complex algorithms into real-world solutions. 
+                        Whether it's building bookshop systems in C++ or experimenting with AI, I approach every 
+                        project with one goal: build things that actually work and help people.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/tace925" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/mulingeTev81504" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="fun-fact">
+                        <i class="fas fa-mug-hot"></i> 
+                        <span>Debugging since 2022 | I once fixed a segfault at 3am and celebrated with cold chai ☕</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="skills">
+            <h2 class="section-title">Toolkit <span class="accent">⚙️</span></h2>
+            <div class="skills-grid">
+                <span class="skill-tag skill-cpp">C++</span>
+                <span class="skill-tag skill-python">Python</span>
+                <span class="skill-tag skill-js">JavaScript</span>
+                <span class="skill-tag skill-react">React (learning)</span>
+                <span class="skill-tag skill-git">Git</span>
+                <span class="skill-tag skill-ds">Data Structures</span>
+                <span class="skill-tag skill-algo">Algorithms</span>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION WITH SCREENSHOTS -->
+        <section id="projects" class="projects">
+            <h2 class="section-title">featured projects <span class="accent">📁</span></h2>
+            <p class="section-subtitle">real systems i've built — each with its own story.</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1: Paul's Portfolio -->
+                <div class="project-card featured">
+                    <div class="project-screenshot">
+                        <img src="images/projects/paul-portfolio.jpg" alt="Paul's Investment Portfolio" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                        <div class="project-overlay">
+                            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span class="repo-name">Paul's Portfolio</span>
+                        </div>
+                        <h3 class="project-title">📊 Investment Portfolio</h3>
+                        <p class="project-tech">HTML/CSS · JavaScript · Dark Mode</p>
+                        <p class="project-description">
+                            A professional portfolio for investor Paul Mutuku Kingo'la. Features include dark mode, 
+                            metrics dashboard, testimonial sections, and a clean, professional design.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ Live Project</span>
+                            <div class="project-links">
+                                <a href="https://paul-investment-portfolio.vercel.app/" target="_blank" class="project-link live-link">
+                                    <i class="fas fa-external-link-alt"></i> view live
+                                </a>
+                                <a href="https://github.com/tace925/paul-investment-portfolio" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Triza's Compendium -->
+                <div class="project-card featured">
+                    <div class="project-screenshot">
+                        <img src="images/projects/triza-compendium.jpg" alt="Triza's Compendium" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                        <div class="project-overlay">
+                            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-utensils"></i>
+                            <span class="repo-name">Triza's Compendium</span>
+                        </div>
+                        <h3 class="project-title">🍳 Culinary Portfolio</h3>
+                        <p class="project-tech">HTML/CSS · JavaScript · Food Theme</p>
+                        <p class="project-description">
+                            A warm, inviting portfolio for culinary creator Triza Njeri. Features recipe collections, 
+                            kitchen updates, music integration, and a beautiful food-themed design.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ Live Project</span>
+                            <div class="project-links">
+                                <a href="https://triza-s-compendium.vercel.app/" target="_blank" class="project-link live-link">
+                                    <i class="fas fa-external-link-alt"></i> view live
+                                </a>
+                                <a href="https://github.com/tace925/Triza-s-Compendium" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Tevin's Tech -->
+                <div class="project-card featured">
+                    <div class="project-screenshot">
+                        <img src="images/projects/tevin-tech.jpg" alt="Tevin's Tech Agency Site" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                        <div class="project-overlay">
+                            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-code"></i>
+                            <span class="repo-name">Tevin's Tech</span>
+                        </div>
+                        <h3 class="project-title">💼 Development Agency Site</h3>
+                        <p class="project-tech">HTML/CSS · JavaScript · Dark Mode</p>
+                        <p class="project-description">
+                            Complete website for my development agency. Features include dark/light mode, 
+                            portfolio showcase, contact forms, and responsive design.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ Live Project</span>
+                            <div class="project-links">
+                                <a href="https://gleeful-speculoos-7d9eff.netlify.app/" target="_blank" class="project-link live-link">
+                                    <i class="fas fa-external-link-alt"></i> view live
+                                </a>
+                                <a href="https://github.com/tace925/Tevin-Tec" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Villa Rent System -->
+                <div class="project-card featured">
+                    <div class="project-screenshot">
+                        <img src="images/projects/villa-system.jpg" alt="Villa Rental System" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                        <div class="project-overlay">
+                            <span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fas fa-home"></i>
+                            <span class="repo-name">Villa Rent System</span>
+                        </div>
+                        <h3 class="project-title">🏡 Villa Rental Platform</h3>
+                        <p class="project-tech">Python · CLI · JSON storage</p>
+                        <p class="project-description">
+                            A rental management system that lets owners list villas and customers book them. 
+                            Built with Python, stores data in JSON, and features search & booking validation.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ Live Project</span>
+                            <div class="project-links">
+                                <a href="https://tevin-villa-rent-system.vercel.app/" target="_blank" class="project-link live-link">
+                                    <i class="fas fa-external-link-alt"></i> view live
+                                </a>
+                                <a href="https://github.com/tace925/tevin-villa-rent-system" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Tether - Unified Ordering System -->
+                <div class="project-card">
+                    <div class="project-screenshot">
+                        <img src="images/projects/tether-system.jpg" alt="Tether - Unified Ordering System" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fab fa-github"></i>
+                            <span class="repo-name">tether-system</span>
+                        </div>
+                        <h3 class="project-title">🔗 Tether – Unified Ordering System</h3>
+                        <p class="project-tech">HTML · CSS · JavaScript · Formspree · Paystack Ready</p>
+                        <p class="project-description">
+                            One platform to connect customers to 12+ product categories. Unified cart, dark mode, 
+                            complaint management with Formspree, and Paystack-ready checkout. Built for scalability 
+                            with supplier API integration in mind.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ live project</span>
+                            <div class="project-links">
+                                <a href="https://tether-lyart.vercel.app/" target="_blank" class="project-link live-link">
+                                    <i class="fas fa-external-link-alt"></i> live
+                                </a>
+                                <a href="https://github.com/tace925/tether-system" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Bookshop System -->
+                <div class="project-card">
+                    <div class="project-screenshot">
+                        <img src="images/projects/bookshop-system.jpg" alt="Bookshop Management System" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fab fa-github"></i>
+                            <span class="repo-name">tevin-bookshop-system</span>
+                        </div>
+                        <h3 class="project-title">📚 Bookshop Management System</h3>
+                        <p class="project-tech">C++ · OOP · File I/O</p>
+                        <p class="project-description">
+                            Complete inventory & sales system for a local bookshop. Handles stock tracking, 
+                            receipts, and customer records — all in C++ with a clean terminal interface.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ 0 stars</span>
+                            <a href="https://github.com/tace925/tevin-bookshop-system" target="_blank" class="project-link">
+                                code <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: SCMS Project -->
+                <div class="project-card">
+                    <div class="project-screenshot">
+                        <img src="images/projects/scms-project.jpg" alt="Supply Chain System" class="project-img"
+                             onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <i class="fab fa-github"></i>
+                            <span class="repo-name">tevin_scms_project</span>
+                        </div>
+                        <h3 class="project-title">🏗️ SCMS (Supply Chain System)</h3>
+                        <p class="project-tech">JavaScript · Node.js · Data structures</p>
+                        <p class="project-description">
+                            A supply chain tracking prototype. Implements core algorithms for order routing 
+                            and inventory alerts. Built with modularity in mind — can be extended to a full web app.
+                        </p>
+                        <div class="project-footer">
+                            <span class="stars-badge">⭐ 0 stars</span>
+                            <a href="https://github.com/tace925/tevin_scms_project" target="_blank" class="project-link">
+                                code <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-container">
+                <a href="https://github.com/tace925?tab=repositories" target="_blank" class="view-all-link">
+                    <i class="fab fa-github"></i> see all on github
+                </a>
+            </div>
+        </section>
+
+        <!-- WHY I CODE SECTION -->
+        <section class="why-section">
+            <h2 class="section-title">why i build <span class="accent">🧠</span></h2>
+            <div class="why-card">
+                <p class="why-text">
+                    I got into coding because I liked the feeling of making a machine do exactly what I want. 
+                    But I stayed because I realised that good code can make someone's daily work easier — 
+                    a bookshop owner who doesn't need spreadsheets, a villa manager who can track bookings in seconds.
+                </p>
+                <p class="why-text">
+                    Right now I'm focused on mastering C++ and algorithms (my current unit), but I'm also 
+                    exploring how to bring those systems online with JavaScript and maybe React. Every project 
+                    I publish is a step toward building tools that are both robust and human.
+                </p>
+                <p class="why-signature">— Tevin</p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact">
+            <h2 class="section-title">let's connect <span class="accent">📬</span></h2>
+            <p class="section-subtitle">whether you have a project idea or just want to chat about segfaults.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>tevinmulinge48@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github contact-icon"></i>
+                        <a href="https://github.com/tace925">github.com/tace925</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-twitter contact-icon"></i>
+                        <a href="https://twitter.com/mulingeTev81504">@mulingeTev81504</a>
+                    </div>
+                    <div class="contact-note">
+                        <i class="fas fa-robot"></i>
+                        <span>P.S. ask me about my 3am debugging rituals.</span>
+                    </div>
+                </div>
+                
+                <!-- FORMSPREE FORM -->
+                <div class="contact-form-container">
+                    <form class="contact-form" action="https://formspree.io/f/mrbpgjqy" method="POST">
+                        <input type="hidden" name="_subject" value="New message from Tevin's Portfolio!">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <p class="form-note">📧 Send me a message:</p>
+                        
+                        <input type="text" name="name" placeholder="your name" required>
+                        <input type="email" name="email" placeholder="your email" required>
+                        <textarea name="message" rows="4" placeholder="your message..." required></textarea>
+                        
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <button type="submit" class="btn btn-primary submit-btn">
+                            send message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>© 2026 Tevin Mulinge · built with <i class="fas fa-heart"></i> in Nairobi</span>
+            <div class="footer-links">
+                <a href="https://github.com/tace925">github</a>
+                <a href="https://twitter.com/mulingeTev81504">twitter</a>
+                <a href="#">linkedin</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
