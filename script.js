@@ -195,21 +195,23 @@ function initCopyEmail() {
     }
 }
 
-// ========== CONTACT FORM ==========
+   // ========== CONTACT FORM ==========
 function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
-    
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const submitBtn = form.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
+
+        // Disable button and show loading
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-        
+
         const formData = new FormData(form);
-        
+
         try {
             const response = await fetch('https://formspree.io/f/maqlogko', {
                 method: 'POST',
@@ -218,21 +220,32 @@ function initContactForm() {
                     'Accept': 'application/json'
                 }
             });
-            
+
             if (response.ok) {
-                alert('✅ Message sent successfully! I\'ll get back to you within 24 hours.');
+                alert('✅ Message sent successfully! I\'ll get back to you soon.');
                 form.reset();
+                // Redirect to thank you page (make sure the file exists)
                 window.location.href = 'thanks.html';
             } else {
-                const errorData = await response.json();
+                const errorData = await response.json().catch(() => ({}));
                 console.error('Formspree error:', errorData);
-                alert('❌ Submission failed. Please try again or email me directly at tevinmulinge48@gmail.com');
+                
+                let errorMsg = '❌ Submission failed. ';
+                if (errorData.errors) {
+                    errorMsg += Object.values(errorData.errors).join(', ');
+                } else {
+                    errorMsg += 'Please try again or email me directly at tevinmulinge48@gmail.com';
+                }
+                
+                alert(errorMsg);
+                
+                // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('❌ Network error. Please check your connection and try again.');
+            console.error('Network error:', error);
+            alert('❌ Network error. Please check your connection and try again, or email me directly at tevinmulinge48@gmail.com');
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }

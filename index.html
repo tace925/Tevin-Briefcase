@@ -452,24 +452,27 @@
         
         <!-- FORMSPREE FORM - CORRECT URL -->
         <!-- FORMSPREE FORM - NEW FORM ID -->
-<div class="contact-form-container">
-    <form class="contact-form" id="contactForm" action="https://formspree.io/f/maqlogko" method="POST">
+        <!-- CONTACT FORM -->
+     <div class="contact-form-container">
+      <form class="contact-form" id="contactForm">
+        <!-- Hidden fields for Formspree -->
         <input type="hidden" name="_subject" value="New message from Tevin's Portfolio!">
-        <input type="hidden" name="_replyto" value="email">
+        <input type="hidden" name="_next" value="https://tevin-briefcase.vercel.app/thanks.html"> <!-- optional: redirect after success -->
         
         <p class="form-note">📧 Send me a message:</p>
         
-        <input type="text" name="name" placeholder="your name" required>
-        <input type="email" name="email" placeholder="your email" required>
-        <textarea name="message" rows="4" placeholder="your message..." required></textarea>
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="5" placeholder="Your message..." required></textarea>
         
-        <input type="text" name="_gotcha" style="display:none">
+        <!-- Honeypot (anti-spam) -->
+        <input type="text" name="_gotcha" style="display:none;" autocomplete="off">
         
         <button type="submit" class="btn btn-primary submit-btn">
-            send message <i class="fas fa-paper-plane"></i>
+            Send Message <i class="fas fa-paper-plane"></i>
         </button>
-    </form>
-</div>
+      </form>
+     </div>
     </div>
 </section>
         <!-- FOOTER -->
