@@ -195,7 +195,7 @@ function initCopyEmail() {
     }
 }
 
-// ========== CONTACT FORM WITH ALERT + REDIRECT ==========
+// ========== CONTACT FORM ==========
 function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
@@ -208,9 +208,10 @@ function initContactForm() {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
+        const formData = new FormData(form);
+        
         try {
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
+            const response = await fetch('https://formspree.io/f/maqlogko', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -225,17 +226,18 @@ function initContactForm() {
             } else {
                 const errorData = await response.json();
                 console.error('Formspree error:', errorData);
-                throw new Error('Submission failed');
+                alert('❌ Submission failed. Please try again or email me directly at tevinmulinge48@gmail.com');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('❌ Something went wrong. Please try again or email me directly at tevinmulinge48@gmail.com');
+            alert('❌ Network error. Please check your connection and try again.');
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         }
     });
 }
-
 // ========== CV DOWNLOAD ==========
 function initCvDownload() {
     const cvBtn = document.getElementById('cv-download');
