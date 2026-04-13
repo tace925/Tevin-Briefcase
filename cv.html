@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tevin Mutuku - CV / Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            padding: 2rem;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark Mode (Default) */
+        body.dark {
+            background: #0a0a0a;
+            color: #e0e0e0;
+        }
+
+        body.light {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a1a2e;
+        }
+
+        body.light .cv-container {
+            background: white;
+            color: #1a1a2e;
+        }
+
+        body.light .cv-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        body.light .summary {
+            background: #f8f9fa;
+            color: #555;
+        }
+
+        body.light .timeline-item {
+            border-left-color: #667eea;
+        }
+
+        body.light .skill-category {
+            background: #f8f9fa;
+        }
+
+        body.light .skill-tag {
+            background: #667eea;
+            color: white;
+        }
+
+        body.light .project-item {
+            background: #f8f9fa;
+        }
+
+        body.light .section-title {
+            color: #1a1a2e;
+            border-bottom-color: #667eea;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #111;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* Header Section */
+        .cv-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .cv-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .cv-header .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .availability-badge {
+            display: inline-block;
+            background: #00ff88;
+            color: #0a0a0a;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .cv-body {
+            padding: 2.5rem;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #00ff88;
+            border-bottom: 3px solid #00ff88;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Summary */
+        .summary {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #aaa;
+            border-left: 4px solid #00ff88;
+        }
+
+        /* Experience & Education */
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid #00ff88;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            color: #00ff88;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item .meta {
+            color: #888;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item .description {
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .skill-category h4 {
+            color: #00ff88;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #00ff88;
+            color: #0a0a0a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Projects */
+        .project-item {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+
+        .project-item:hover {
+            transform: translateX(5px);
+            border-color: #00ff88;
+        }
+
+        .project-item h4 {
+            color: #00ff88;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-item .project-tech {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-cv {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle-cv:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .print-btn, .back-btn {
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .print-btn:hover, .back-btn:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        @media print {
+            .theme-toggle-cv, .action-buttons {
+                display: none;
+            }
+            body {
+                padding: 0;
+                background: white;
+            }
+            body.light .cv-container,
+            .cv-container {
+                box-shadow: none;
+                background: white;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .cv-header h1 {
+                font-size: 1.8rem;
+            }
+            .contact-info {
+                gap: 0.8rem;
+            }
+            .contact-info a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+            .theme-toggle-cv {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            .action-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="cv-container">
+        <!-- Header -->
+        <div class="cv-header">
+            <h1>Tevin Mutuku</h1>
+            <div class="title">Full Stack Developer</div>
+            <div class="availability-badge">
+                <i class="fas fa-circle" style="font-size: 0.7rem; color: #00ff88;"></i> Available for work
+            </div>
+            <div class="contact-info">
+                <a href="tel:+254 743 936 403"><i class="fas fa-phone"></i> +254 743 936 403</a>
+                <a href="https://github.com/tace925" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://linkedin.com/in/tevin" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://tevin-briefcase.vercel.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="cv-body">
+            <!-- Summary -->
+            <div class="summary">
+                <i class="fas fa-quote-left" style="color: #00ff88; margin-right: 0.5rem;"></i>
+                Full Stack Developer from Nairobi with a passion for building practical, user-focused solutions. 
+                Experienced in JavaScript, Python, and modern web technologies. I turn complex problems into 
+                clean, working code that makes a difference.
+            </div>
+
+            <!-- Experience -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+                
+                <div class="timeline-item">
+                    <h3>Freelance Full Stack Developer</h3>
+                    <div class="meta">Self-Employed · 2023 - Present</div>
+                    <div class="description">
+                        Built and deployed multiple web applications including booking systems, e-commerce platforms, 
+                        and admin dashboards. Integrated payment systems (M-Pesa, Paystack) and managed Supabase/PostgreSQL databases.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Junior Developer Intern</h3>
+                    <div class="meta">Tech Startup Nairobi · 2022 - 2023</div>
+                    <div class="description">
+                        Assisted in developing REST APIs, fixed critical bugs, optimized database queries, 
+                        and collaborated on frontend components using React and vanilla JavaScript.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                
+                <div class="timeline-item">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <div class="meta">University of Nairobi · 2020 - 2024</div>
+                    <div class="description">
+                        Coursework: Data Structures & Algorithms, Database Systems, Web Development, Software Engineering.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5/CSS3</span>
+                            <span class="skill-tag">JavaScript (ES6+)</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Supabase</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">JSON Storage</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Others</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag">Vercel</span>
+                            <span class="skill-tag">Netlify</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Projects -->
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> Featured Projects</h2>
+                
+                <div class="project-item">
+                    <h4>KAG Guest House Booking System</h4>
+                    <div class="project-tech">JavaScript · Supabase · M-Pesa Integration</div>
+                    <div>Complete booking system with room selection, dynamic pricing, admin dashboard, and payment simulation.</div>
+                </div>
+
+                <div class="project-item">
+                    <h4>Tether - Unified Ordering System</h4>
+                    <div class="project-tech">HTML/CSS · JavaScript · Paystack Ready</div>
+                    <div>One platform connecting customers to 12+ product categories with unified cart and dark mode.</div>
+                </div>
+
+                <div class="project-item">
+                    <h4>Development Agency Portfolio</h4>
+                    <div class="project-tech">HTML/CSS · JavaScript · Dark Mode</div>
+                    <div>Professional portfolio website featuring dark/light mode, project showcase, and contact forms.</div>
+                </div>
+            </div>
+
+            <!-- Debugging Quote -->
+            <div class="summary" style="text-align: center; font-size: 0.9rem;">
+                <i class="fas fa-bug" style="color: #00ff88;"></i> Debugging since 2022 | 
+                I once fixed a segfault at 3am and celebrated with cold chai 🍻
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle-cv" id="themeToggleCV">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+        <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> Print/Save PDF</button>
+    </div>
+
+    <script>
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggleCV');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('cv_theme');
+        if (savedTheme === 'light') {
+            body.classList.remove('dark');
+            body.classList.add('light');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        } else {
+            body.classList.add('dark');
+            body.classList.remove('light');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                localStorage.setItem('cv_theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                localStorage.setItem('cv_theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
